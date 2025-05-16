@@ -5,8 +5,7 @@ const {Sequelize,DataTypes} = require ("sequelize")
 //const sequelize = sequelize.sequelize
 //const Datatype = sequelize.Datatype
 
-const sequelize = new Sequelize ("postgresql://postgres.ksqeybasyvmjoeexeesf:hahahehehuhu123@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
-)
+const sequelize = new Sequelize (process.env.CS)
 
 sequelize.authenticate()
     .then(() => {
