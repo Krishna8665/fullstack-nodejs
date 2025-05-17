@@ -19,4 +19,13 @@ sequelize.authenticate()
  db.Sequelize = Sequelize   
  db.sequelize = sequelize  
 
+ db.books = require("./models/book.Model")(sequelize,DataTypes)
+
+
+ sequelize.sync({alter : false }).then (() => {
+    console.log("Mitigate vayo hai tw")
+ })
+
+
+
  module.exports = db
