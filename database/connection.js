@@ -24,8 +24,10 @@ sequelize.authenticate()
 
  sequelize.sync({alter : false }).then (() => {
     console.log("Mitigate vayo hai tw")
+ }).catch((err)=>{
+    console.log("Unable to create table")
  })
 
+ 
 
-
- module.exports = db
+ module.exports = db 
