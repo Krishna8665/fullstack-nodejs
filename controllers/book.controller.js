@@ -21,7 +21,7 @@ exports.addBook =  async function(req, res) {
     await books.create({
         bookName,
         price: bookPrice,
-        bookAuthor,
+        bookAuthor, 
         bookGenre
         //columName: value            
     })
@@ -31,18 +31,46 @@ exports.addBook =  async function(req, res) {
 
 };
 
-exports.deleteBook =  (req, res) => {
+exports.deleteBook = async function(req,res){
+    // first ma hami, kun book delete garna aatekoho tesko id lim. 
+    const id = req.params.id // const {id} = req.params
+//    const id = req.body.id 
+    // id payisakeypaxi, tyo id ko book chai books table bata udaidim 
+    await books.destroy({
+        where : {
+            id
+        }
+    }) // delete from books where id = id
     res.json({
-        message: "Book Deleted"
-
-    })
-};
-exports.editBook = (req, res) => {
-    res.json({
-        message: "Book Updated"
-
+      message : "Book Deleted successfully"
     })
 }
+
+exports.editBook = async function(req,res){
+   try {
+     // logic to update book
+    // kun id ko chai edit garne tyo id linu paryo . 
+    const id = req.params.id
+    // k k update garne tw .. 
+    const {bookName,price,bookAuthor,bookGenre} = req.body
+
+    await books.update({bookName,price, bookAuthor,bookGenre },{
+        where : {
+            id : id
+        }
+    })
+    // books.findByIdAndUpdate(id,{})
+
+    res.json({
+      message : "Book updated successfully"
+    })
+   } catch (error) {
+    res.json({
+        message : "Something went wrong"
+    })
+   }
+}
+
 
 exports.singleFetchBook = async function(req,res){
     // first capture what id is he/she sending 
