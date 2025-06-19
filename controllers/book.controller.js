@@ -18,9 +18,9 @@ exports.addBook =  async function(req, res) {
 
     const { bookName, bookPrice, bookAuthor, bookGenre } = req.body
     //check if all data aako cha vane only proceed, else not proceed throw error in response
-    await books.create({
+    await books.create({   //front end ta aako data tyo table ma save garcha ani book add vayesi msg pathauncha front end lai
         bookName,
-        price: bookPrice,
+        price: bookPrice,           
         bookAuthor, 
         bookGenre
         //columName: value            

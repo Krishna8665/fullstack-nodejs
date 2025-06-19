@@ -1,9 +1,17 @@
 const express = require("express");
 const bookRoute = require("./routes/bookRoutes")
+const cors = require("cors")
+
+
 const app = express()
 //let app = require("express")()
 
 require("./database/connection")
+
+app.use(cors({
+    origin : "http://localhost:5173"
+}))
+
 app.use(express.json())
 
 app.use("/api/",bookRoute)

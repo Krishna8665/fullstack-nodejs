@@ -1,26 +1,30 @@
 
 
-const bookModel = (sequelize,DataTypes) => {
-  const Book = sequelize.define("book" ,{
-        bookName : {
-            type : DataTypes.STRING,
-            allowNull : false 
-        },        
-        price : {
-            type : DataTypes.INTEGER,
-            allowNull : false 
+const bookModel = (sequelize, DataTypes) => {
+    const Book = sequelize.define("book", {
+        bookName: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        bookAuthor : {
-            type : DataTypes.STRING ,
+        price: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
-        bookGenre : {
-            type : DataTypes.STRING
-        }
+        bookAuthor: {
+            type: DataTypes.STRING,
+        },
+        bookGenre: {
+            type: DataTypes.STRING
+        },         
+        // bookDescription: {
+        //     type: DataTypes.TEXT
+        // }
 
-        })
-        return Book
 
-    }
+    })
+    return Book
+
+}
 
 
-    module.exports = bookModel
+module.exports = bookModel
