@@ -17,6 +17,13 @@ exports.addBook =  async function(req, res) {
     //const bookPrice = req.body.bookPrice
 
     const { bookName, bookPrice, bookAuthor, bookGenre } = req.body
+    if(!bookName || !bookGenre || !bookAuthor || !bookPrice){   //Application validation for filling data
+        return res.json({
+
+            message : "Please provide all the datas..."
+        }
+        )
+    }
     //check if all data aako cha vane only proceed, else not proceed throw error in response
     await books.create({   //front end ta aako data tyo table ma save garcha ani book add vayesi msg pathauncha front end lai
         bookName,
